@@ -1,0 +1,12 @@
+{
+  "name": "multikurso",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "mercadopago": "^2.0.0",
+    "resend": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
