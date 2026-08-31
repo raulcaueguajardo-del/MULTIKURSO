@@ -159,16 +159,41 @@ function renderStrip(){
   const items=['🤖 IA & Productividad','💼 Negocios Digitales','💰 Finanzas Personales','🛠️ Habilidades','🧘 Bienestar','📧 Email Marketing'];
   const d=[...items,...items];
   document.getElementById('strip').innerHTML=d.map(i=>`<span class="strip-item">${i}</span>`).join('');
+}function comprar(cursoId,titulo,precio){
+  const opciones=document.createElement('div');
+  opciones.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:999';
+  opciones.innerHTML=`
+    <div style="background:#fff;border-radius:16px;padding:2rem;max-width:320px;width:90%;text-align:center">
+      <div style="font-size:1.1rem;font-weight:700;margin-bottom:.4rem">¿Cómo querés pagar?</div>
+      <div style="font-size:13px;color:#666;margin-bottom:1.5rem">${titulo}</div>
+      <a href="https://go.hotmart.com/I107332377J" target="_blank"
+         style="display:block;background:#FF6B2B;color:#fff;font-weight:700;padding:12px;border-radius:10px;text-decoration:none;margin-bottom:10px">
+        🟠 Pagar con Hotmart
+      </a>
+      <button onclick="pagarMP('${cursoId}')" 
+         style="display:block;width:100%;background:#009EE3;color:#fff;font-weight:700;padding:12px;border-radius:10px;border:none;cursor:pointer;margin-bottom:10px">
+        🔵 Pagar con Mercado Pago
+      </button>
+      <button onclick="this.closest('div').parentElement.remove()"
+         style="background:none;border:none;color:#aaa;font-size:13px;cursor:pointer">
+        Cancelar
+      </button>
+    </div>`;
+  document.body.appendChild(opciones);
 }
-function filtrar(n){activo=n;renderFilters();renderGrid();}
-async function comprar(cursoId,titulo,precio){
+
+async function pagarMP(cursoId){
+  const email=prompt('Tu email para recibir el curso:');
+  if(!email)return;
   try{
     const r=await fetch('/api/crear-pago',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({cursoId,nombre:'Cliente',apellido:'Multikurso',email:prompt('Tu email para recibir el curso:')})});
+      body:JSON.stringify({cursoId,nombre:'Cliente',apellido:'Multikurso',email})});
     const d=await r.json();
     if(d.init_point)window.location.href=d.init_point;
   }catch(e){alert('Error al procesar el pago. Intentá de nuevo.');}
 }
+function filtrar(n){activo=n;renderFilters();renderGrid();}
+async
 renderFilters();renderGrid();renderBundles();renderStrip();
 </script>
 </body>
