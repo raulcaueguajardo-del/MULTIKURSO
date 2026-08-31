@@ -31,27 +31,14 @@ section{padding:3rem 1.5rem;max-width:1000px;margin:0 auto}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
 .card{background:#fff;border:1px solid #ddd;border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
 .card-thumb{height:100px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;position:relative}
-.card-badge{position:absolute;top:8px;left:8px;font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px}
-.badge-own{background:#DFFDE9;color:#0A6624}
-.badge-partner{background:#E8F0FE;color:#1A56C4}
+.card-badge{position:absolute;top:8px;left:8px;font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px;background:#DFFDE9;color:#0A6624}
 .badge-hot{position:absolute;top:8px;right:8px;background:#FEE2E2;color:#C42A2A;font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px}
 .card-body{padding:.9rem 1rem;flex:1;display:flex;flex-direction:column}
 .card-niche{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#999;margin-bottom:4px}
 .card-title{font-size:13px;font-weight:700;line-height:1.3;flex:1;margin-bottom:10px}
 .card-footer{display:flex;align-items:center;justify-content:space-between}
-.price-old{font-size:11px;color:#aaa;text-decoration:line-through;margin-right:3px}
 .price-new{font-size:17px;font-weight:900;color:#0F1B2D}
 .btn-buy{background:#F5C518;color:#0F1B2D;font-weight:700;font-size:12px;padding:6px 12px;border-radius:7px;border:none;cursor:pointer}
-.bundles{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
-.bundle-card{background:#0F1B2D;color:#fff;border-radius:12px;padding:1.4rem}
-.bundle-tag{display:inline-block;background:#F5C518;color:#0F1B2D;font-size:10px;font-weight:700;padding:2px 10px;border-radius:5px;margin-bottom:.8rem}
-.bundle-emoji{font-size:2rem;display:block;margin-bottom:.6rem}
-.bundle-title{font-size:15px;font-weight:800;margin-bottom:.3rem}
-.bundle-desc{font-size:12px;color:rgba(255,255,255,0.6);margin-bottom:1.2rem;line-height:1.5}
-.bundle-footer{display:flex;align-items:center;justify-content:space-between}
-.bundle-old{font-size:11px;color:rgba(255,255,255,0.4);text-decoration:line-through}
-.bundle-new{font-size:1.4rem;font-weight:900;color:#F5C518}
-.btn-bundle{background:#F5C518;color:#0F1B2D;font-weight:700;font-size:13px;padding:9px 16px;border-radius:8px;border:none;cursor:pointer}
 .trust{background:#fff;border-top:1px solid #eee;border-bottom:1px solid #eee;padding:1.2rem 1.5rem;display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
 .trust-item{font-size:13px;color:#555}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:999}
@@ -63,6 +50,27 @@ section{padding:3rem 1.5rem;max-width:1000px;margin:0 auto}
 .btn-cancel{background:none;border:none;color:#aaa;font-size:13px;cursor:pointer}
 footer{background:#0F1B2D;color:rgba(255,255,255,0.4);text-align:center;padding:1.5rem;font-size:12px}
 footer strong{color:#F5C518}
+.chat-btn{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:#F5C518;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.2);z-index:200;border:none}
+.chat-box{position:fixed;bottom:90px;right:16px;width:340px;background:#fff;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.15);z-index:200;display:none;flex-direction:column;overflow:hidden;max-height:500px}
+.chat-box.open{display:flex}
+.chat-header{background:#0F1B2D;padding:14px 16px;display:flex;align-items:center;gap:10px}
+.chat-avatar{width:32px;height:32px;border-radius:50%;background:#F5C518;display:flex;align-items:center;justify-content:center;font-size:16px}
+.chat-name{color:#fff;font-size:14px;font-weight:700}
+.chat-status{color:rgba(255,255,255,0.6);font-size:11px}
+.chat-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,0.6);font-size:20px;cursor:pointer;line-height:1}
+.chat-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:85%;padding:9px 13px;border-radius:14px;font-size:13px;line-height:1.5}
+.msg.bot{background:#F0F0F0;color:#1A1916;align-self:flex-start;border-bottom-left-radius:4px}
+.msg.user{background:#0F1B2D;color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.chat-quick{display:flex;flex-wrap:wrap;gap:5px;padding:0 14px 10px}
+.chat-quick button{background:#F7F6F2;border:1px solid #ddd;border-radius:99px;padding:4px 11px;font-size:11px;color:#0F1B2D;cursor:pointer;font-family:inherit}
+.chat-input-row{display:flex;gap:8px;padding:12px}
+.chat-input{flex:1;border:1px solid #ddd;border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;outline:none}
+.chat-send{background:#F5C518;border:none;border-radius:8px;width:36px;height:36px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center}
+.typing-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#999;animation:blink 1.2s infinite}
+.typing-dot:nth-child(2){animation-delay:.2s}
+.typing-dot:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,60%,100%{opacity:0.2}30%{opacity:1}}
 </style>
 </head>
 <body>
@@ -91,6 +99,7 @@ footer strong{color:#F5C518}
   <div class="trust-item">7 dias de garantia</div>
 </div>
 <footer>2025 <strong>Multikurso</strong></footer>
+
 <div id="modal" style="display:none" class="modal">
   <div class="modal-box">
     <div class="modal-title">Como queres pagar?</div>
@@ -100,93 +109,122 @@ footer strong{color:#F5C518}
     <button class="btn-cancel" onclick="cerrarModal()">Cancelar</button>
   </div>
 </div>
+
+<button class="chat-btn" onclick="toggleChat()" aria-label="Abrir asistente">🤖</button>
+<div class="chat-box" id="chat-box">
+  <div class="chat-header">
+    <div class="chat-avatar">🤖</div>
+    <div>
+      <div class="chat-name">Asistente Multikurso</div>
+      <div class="chat-status">● En linea</div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">×</button>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+    <div class="msg bot">Hola! Soy el asistente de Multikurso. Puedo ayudarte a encontrar el producto ideal. Que te gustaria aprender?</div>
+  </div>
+  <div class="chat-quick" id="chat-quick">
+    <button onclick="enviarRapido('Quiero info sobre salud y trasplante')">Salud</button>
+    <button onclick="enviarRapido('Me interesan los cursos tecnicos')">Tecnicos</button>
+    <button onclick="enviarRapido('Cuanto cuestan los cursos?')">Precios</button>
+    <button onclick="enviarRapido('Como funciona la entrega?')">Como funciona</button>
+  </div>
+  <div class="chat-input-row">
+    <input class="chat-input" id="chat-input" placeholder="Escribi tu pregunta..." onkeydown="if(event.key==='Enter')enviarChat()">
+    <button class="chat-send" onclick="enviarChat()">➤</button>
+  </div>
+</div>
+
 <script>
-var cursos = [
-  {nicho:"salud",emoji:"💙",titulo:"Nuevos Comienzos - Guia para pacientes trasplantados",precio:10,antes:null,tipo:"propio",hot:true,link:"https://go.hotmart.com/I107332377J"},
-  {nicho:"salud",emoji:"🩺",titulo:"Guia para pacientes en dialisis",precio:10,antes:null,tipo:"propio",hot:false,link:"https://go.hotmart.com/I107332377J"},
-  {nicho:"habilidades",emoji:"⚡",titulo:"Curso de electricidad basico",precio:15,antes:null,tipo:"propio",hot:false,link:"https://go.hotmart.com/I107332377J"},
-  {nicho:"habilidades",emoji:"❄️",titulo:"Reparacion de aire acondicionado",precio:15,antes:null,tipo:"propio",hot:false,link:"https://go.hotmart.com/I107332377J"},
-  {nicho:"habilidades",emoji:"📱",titulo:"Reparacion de celulares",precio:15,antes:null,tipo:"propio",hot:false,link:"https://go.hotmart.com/I107332377J"}
+var cursos=[
+  {nicho:"salud",emoji:"💙",titulo:"Nuevos Comienzos - Guia para pacientes trasplantados",precio:10,tipo:"propio",hot:true,link:"https://go.hotmart.com/I107332377J"},
+  {nicho:"salud",emoji:"🩺",titulo:"Guia para pacientes en dialisis",precio:10,tipo:"propio",hot:false,link:"https://go.hotmart.com/I107332377J"},
+  {nicho:"habilidades",emoji:"⚡",titulo:"Curso de electricidad basico",precio:15,tipo:"propio",hot:false,link:"https://go.hotmart.com/I107332377J"},
+  {nicho:"habilidades",emoji:"❄️",titulo:"Reparacion de aire acondicionado",precio:15,tipo:"propio",hot:false,link:"https://go.hotmart.com/I107332377J"},
+  {nicho:"habilidades",emoji:"📱",titulo:"Reparacion de celulares",precio:15,tipo:"propio",hot:false,link:"https://go.hotmart.com/I107332377J"}
 ];
-var nichos = {todos:"Todos",salud:"Salud",habilidades:"Habilidades"};
-var colores = {salud:"#FFF0F3",habilidades:"#FFF1F2"};
-var activo = "todos";
-var linkActivo = "";
+var nichos={todos:"Todos",salud:"Salud",habilidades:"Habilidades"};
+var colores={salud:"#FFF0F3",habilidades:"#FFF1F2"};
+var activo="todos";
+var linkActivo="";
+var historial=[];
+var SYSTEM="Eres el asistente de ventas de Multikurso. Responde siempre en español, breve y calido (max 3 oraciones). Productos: 1) Nuevos Comienzos - Guia trasplantados US$10, 2) Guia dialisis US$10, 3) Electricidad basico US$15, 4) Aire acondicionado US$15, 5) Reparacion celulares US$15. Todos con acceso inmediato y 7 dias de garantia. Pago con Hotmart o Mercado Pago. Invita a comprar cuando notes interes.";
 
 function renderFilters(){
-  var html = "";
-  for(var k in nichos){
-    html += '<button class="filter-btn' + (k===activo?" active":"") + '" onclick="filtrar(\''+k+'\')">' + nichos[k] + "</button>";
-  }
-  document.getElementById("filters").innerHTML = html;
+  var h="";
+  for(var k in nichos) h+='<button class="filter-btn'+(k===activo?" active":"")+'" onclick="filtrar(\''+k+'\')">'+nichos[k]+"</button>";
+  document.getElementById("filters").innerHTML=h;
 }
-
 function renderGrid(){
-  var lista = activo==="todos" ? cursos : cursos.filter(function(c){return c.nicho===activo;});
-  var html = "";
+  var lista=activo==="todos"?cursos:cursos.filter(function(c){return c.nicho===activo;});
+  var h="";
   for(var i=0;i<lista.length;i++){
-    var c = lista[i];
-    var color = colores[c.nicho] || "#F7F6F2";
-    html += '<div class="card">';
-    html += '<div class="card-thumb" style="background:'+color+'">';
-    html += '<span>'+c.emoji+'</span>';
-    html += '<span class="card-badge badge-own">Propio</span>';
-    if(c.hot) html += '<span class="badge-hot">Popular</span>';
-    html += '</div>';
-    html += '<div class="card-body">';
-    html += '<div class="card-niche">'+nichos[c.nicho]+'</div>';
-    html += '<div class="card-title">'+c.titulo+'</div>';
-    html += '<div class="card-footer">';
-    html += '<span class="price-new">$'+c.precio+'</span>';
-    html += '<button class="btn-buy" onclick="abrirModal(\''+c.link+'\',\''+c.titulo+'\')">Comprar</button>';
-    html += '</div></div></div>';
+    var c=lista[i];
+    h+='<div class="card"><div class="card-thumb" style="background:'+(colores[c.nicho]||"#F7F6F2")+'"><span>'+c.emoji+'</span><span class="card-badge">Propio</span>'+(c.hot?'<span class="badge-hot">Popular</span>':'')+'</div><div class="card-body"><div class="card-niche">'+nichos[c.nicho]+'</div><div class="card-title">'+c.titulo+'</div><div class="card-footer"><span class="price-new">$'+c.precio+'</span><button class="btn-buy" onclick="abrirModal(\''+c.link+'\',\''+c.titulo+'\')">Comprar</button></div></div></div>';
   }
-  document.getElementById("grid").innerHTML = html;
+  document.getElementById("grid").innerHTML=h;
 }
-
 function renderStrip(){
-  var items = ["Salud","Habilidades Tecnicas","Electricidad","Celulares","Aire Acondicionado","Guias Medicas"];
-  var d = items.concat(items);
-  var html = "";
-  for(var i=0;i<d.length;i++){
-    html += '<span class="strip-item">'+d[i]+'</span>';
-  }
-  document.getElementById("strip").innerHTML = html;
+  var items=["Salud","Habilidades Tecnicas","Electricidad","Celulares","Aire Acondicionado","Guias Medicas"];
+  var d=items.concat(items);
+  document.getElementById("strip").innerHTML=d.map(function(i){return'<span class="strip-item">'+i+'</span>';}).join('');
 }
-
-function filtrar(n){
-  activo = n;
-  renderFilters();
-  renderGrid();
+function filtrar(n){activo=n;renderFilters();renderGrid();}
+function abrirModal(link,titulo){
+  linkActivo=link;
+  document.getElementById("modal-titulo").textContent=titulo;
+  document.getElementById("btn-hotmart").href=link;
+  document.getElementById("modal").style.display="flex";
 }
-
-function abrirModal(link, titulo){
-  linkActivo = link;
-  document.getElementById("modal-titulo").textContent = titulo;
-  document.getElementById("btn-hotmart").href = link;
-  document.getElementById("modal").style.display = "flex";
-}
-
-function cerrarModal(){
-  document.getElementById("modal").style.display = "none";
-}
-
+function cerrarModal(){document.getElementById("modal").style.display="none";}
 async function pagarMP(){
-  var email = prompt("Tu email para recibir el acceso:");
-  if(!email) return;
+  var email=prompt("Tu email para recibir el acceso:");
+  if(!email)return;
   try{
-    var r = await fetch("/api/crear-pago",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({cursoId:"curso",nombre:"Cliente",apellido:"Web",email:email})});
-    var d = await r.json();
-    if(d.init_point) window.location.href = d.init_point;
-    else alert("Error al procesar. Usa Hotmart por ahora.");
-  }catch(e){
-    alert("Error al conectar. Usa Hotmart por ahora.");
-  }
+    var r=await fetch("/api/crear-pago",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({cursoId:"curso",nombre:"Cliente",apellido:"Web",email:email})});
+    var d=await r.json();
+    if(d.init_point)window.location.href=d.init_point;
+    else alert("Usa Hotmart por ahora.");
+  }catch(e){alert("Usa Hotmart por ahora.");}
 }
-
-renderFilters();
-renderGrid();
-renderStrip();
+function toggleChat(){
+  var box=document.getElementById("chat-box");
+  box.classList.toggle("open");
+}
+function agregarMsg(texto,tipo){
+  var div=document.getElementById("chat-messages");
+  div.innerHTML+='<div class="msg '+tipo+'">'+texto+'</div>';
+  div.scrollTop=div.scrollHeight;
+}
+function mostrarTyping(){
+  var div=document.getElementById("chat-messages");
+  div.innerHTML+='<div class="msg bot" id="typing"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>';
+  div.scrollTop=div.scrollHeight;
+}
+function quitarTyping(){var t=document.getElementById("typing");if(t)t.remove();}
+async function enviarChat(){
+  var input=document.getElementById("chat-input");
+  var texto=input.value.trim();
+  if(!texto)return;
+  input.value="";
+  document.getElementById("chat-quick").style.display="none";
+  agregarMsg(texto,"user");
+  mostrarTyping();
+  historial.push({role:"user",content:texto});
+  try{
+    var r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-6",max_tokens:1000,system:SYSTEM,messages:historial})});
+    var data=await r.json();
+    var resp=data.content&&data.content[0]?data.content[0].text:"Disculpa, hubo un error.";
+    historial.push({role:"assistant",content:resp});
+    quitarTyping();
+    agregarMsg(resp,"bot");
+  }catch(e){quitarTyping();agregarMsg("Error de conexion. Intenta de nuevo.","bot");}
+}
+function enviarRapido(texto){
+  document.getElementById("chat-input").value=texto;
+  enviarChat();
+}
+renderFilters();renderGrid();renderStrip();
 </script>
 </body>
 </html>
