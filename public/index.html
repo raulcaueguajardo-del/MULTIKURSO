@@ -53,13 +53,13 @@ section{padding:3rem 1.5rem;max-width:1000px;margin:0 auto}
 .bundle-new{font-size:1.4rem;font-weight:900;color:#F5C518}
 .btn-bundle{background:#F5C518;color:#0F1B2D;font-weight:700;font-size:13px;padding:9px 16px;border-radius:8px;border:none;cursor:pointer}
 .trust{background:#fff;border-top:1px solid #eee;border-bottom:1px solid #eee;padding:1.2rem 1.5rem;display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
-.trust-item{font-size:13px;color:#555;display:flex;align-items:center;gap:6px}
+.trust-item{font-size:13px;color:#555}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:999}
 .modal-box{background:#fff;border-radius:16px;padding:2rem;max-width:320px;width:90%;text-align:center}
 .modal-title{font-size:1.1rem;font-weight:700;margin-bottom:.3rem}
 .modal-sub{font-size:13px;color:#666;margin-bottom:1.5rem}
 .btn-hotmart{display:block;background:#FF6B2B;color:#fff;font-weight:700;padding:12px;border-radius:10px;text-decoration:none;margin-bottom:10px}
-.btn-mp{display:block;width:100%;background:#009EE3;color:#fff;font-weight:700;padding:12px;border-radius:10px;border:none;cursor:pointer;margin-bottom:10px}
+.btn-mp{display:block;width:100%;background:#009EE3;color:#fff;font-weight:700;padding:12px;border-radius:10px;border:none;cursor:pointer;margin-bottom:10px;font-family:inherit;font-size:14px}
 .btn-cancel{background:none;border:none;color:#aaa;font-size:13px;cursor:pointer}
 footer{background:#0F1B2D;color:rgba(255,255,255,0.4);text-align:center;padding:1.5rem;font-size:12px}
 footer strong{color:#F5C518}
@@ -68,132 +68,125 @@ footer strong{color:#F5C518}
 <body>
 <nav>
   <div class="logo">Multi<span>kurso</span></div>
-  <a href="#cursos" class="nav-cta">Ver cursos →</a>
+  <a href="#cursos" class="nav-cta">Ver cursos</a>
 </nav>
 <div class="hero">
-  <div class="hero-badge">⚡ Acceso inmediato · Sin suscripción</div>
-  <h1>Aprende algo que <em>cambia</em><br>lo que podés hacer</h1>
-  <p>Cursos digitales en IA, negocios, finanzas y más.<br>Compra una vez, aprende para siempre.</p>
-  <a href="#cursos" class="btn-primary">🎓 Explorar cursos</a>
+  <div class="hero-badge">Acceso inmediato · Sin suscripcion</div>
+  <h1>Aprende algo que <em>cambia</em> lo que podes hacer</h1>
+  <p>Guias, ebooks y cursos tecnicos. Compra una vez, accede para siempre.</p>
+  <a href="#cursos" class="btn-primary">Explorar cursos</a>
 </div>
 <div class="strip"><div class="strip-inner" id="strip"></div></div>
 <section id="cursos">
-  <div class="sec-label">Catálogo</div>
-  <div class="sec-title">Todos los cursos</div>
-  <p class="sec-sub">Propios y de partners. Acceso inmediato al pagar.</p>
+  <div class="sec-label">Catalogo</div>
+  <div class="sec-title">Todos los productos</div>
+  <p class="sec-sub">Acceso inmediato al pagar.</p>
   <div class="filters" id="filters"></div>
   <div class="grid" id="grid"></div>
 </section>
 <div class="trust">
-  <div class="trust-item">⚡ Acceso inmediato</div>
-  <div class="trust-item">🔒 Pago seguro</div>
-  <div class="trust-item">♾️ Acceso de por vida</div>
-  <div class="trust-item">🛡️ 7 días de garantía</div>
+  <div class="trust-item">Acceso inmediato</div>
+  <div class="trust-item">Pago seguro</div>
+  <div class="trust-item">Acceso de por vida</div>
+  <div class="trust-item">7 dias de garantia</div>
 </div>
-<section id="packs">
-  <div class="sec-label">Mejor valor</div>
-  <div class="sec-title">Packs con descuento</div>
-  <p class="sec-sub">Varios cursos juntos a precio reducido.</p>
-  <div class="bundles" id="bundles"></div>
-</section>
-<footer>© 2025 <strong>Multikurso</strong> — Todos los derechos reservados</footer>
-<div class="modal" id="modal" style="display:none">
+<footer>2025 <strong>Multikurso</strong></footer>
+<div id="modal" style="display:none" class="modal">
   <div class="modal-box">
-    <div class="modal-title">¿Cómo querés pagar?</div>
+    <div class="modal-title">Como queres pagar?</div>
     <div class="modal-sub" id="modal-titulo"></div>
-    <a href="https://go.hotmart.com/I107332377J" target="_blank" class="btn-hotmart">🟠 Pagar con Hotmart</a>
-    <button class="btn-mp" onclick="pagarMP()">🔵 Pagar con Mercado Pago</button>
+    <a id="btn-hotmart" href="#" target="_blank" class="btn-hotmart">Pagar con Hotmart</a>
+    <button class="btn-mp" onclick="pagarMP()">Pagar con Mercado Pago</button>
     <button class="btn-cancel" onclick="cerrarModal()">Cancelar</button>
   </div>
 </div>
 <script>
-const cursos=[
-  {nicho:'salud',emoji:'💙',titulo:'Nuevos Comienzos — Guía para pacientes trasplantados',precio:10,antes:null,tipo:'propio',hot:true,link:'https://go.hotmart.com/I107332377J'},
-  {nicho:'salud',emoji:'🩺',titulo:'Guía para pacientes en diálisis',precio:10,antes:null,tipo:'propio',hot:false,link:'https://go.hotmart.com/I107332377J'},
-  {nicho:'habilidades',emoji:'⚡',titulo:'Curso de electricidad — Módulos básicos',precio:15,antes:null,tipo:'propio',hot:false,link:'https://go.hotmart.com/I107332377J'},
-  {nicho:'habilidades',emoji:'❄️',titulo:'Reparación de aire acondicionado',precio:15,antes:null,tipo:'propio',hot:false,link:'https://go.hotmart.com/I107332377J'},
-  {nicho:'habilidades',emoji:'📱',titulo:'Reparación de celulares',precio:15,antes:null,tipo:'propio',hot:false,link:'https://go.hotmart.com/I107332377J'},
+var cursos = [
+  {nicho:"salud",emoji:"💙",titulo:"Nuevos Comienzos - Guia para pacientes trasplantados",precio:10,antes:null,tipo:"propio",hot:true,link:"https://go.hotmart.com/I107332377J"},
+  {nicho:"salud",emoji:"🩺",titulo:"Guia para pacientes en dialisis",precio:10,antes:null,tipo:"propio",hot:false,link:"https://go.hotmart.com/I107332377J"},
+  {nicho:"habilidades",emoji:"⚡",titulo:"Curso de electricidad basico",precio:15,antes:null,tipo:"propio",hot:false,link:"https://go.hotmart.com/I107332377J"},
+  {nicho:"habilidades",emoji:"❄️",titulo:"Reparacion de aire acondicionado",precio:15,antes:null,tipo:"propio",hot:false,link:"https://go.hotmart.com/I107332377J"},
+  {nicho:"habilidades",emoji:"📱",titulo:"Reparacion de celulares",precio:15,antes:null,tipo:"propio",hot:false,link:"https://go.hotmart.com/I107332377J"}
 ];
-  {nicho:'ia',emoji:'🤖',titulo:'ChatGPT para trabajar 2x más rápido',precio:37,antes:67,tipo:'propio',hot:true},
-  {nicho:'ia',emoji:'🎨',titulo:'Crea imágenes con IA sin ser diseñador',precio:27,antes:null,tipo:'partner',hot:false},
-  {nicho:'negocios',emoji:'🚀',titulo:'Lanza tu primer negocio digital en 30 días',precio:97,antes:147,tipo:'propio',hot:true},
-  {nicho:'negocios',emoji:'📧',titulo:'Email marketing que vende en automático',precio:47,antes:null,tipo:'partner',hot:false},
-  {nicho:'finanzas',emoji:'📊',titulo:'Finanzas personales desde cero',precio:29,antes:49,tipo:'propio',hot:false},
-  {nicho:'finanzas',emoji:'📈',titulo:'Inversión para principiantes',precio:37,antes:null,tipo:'partner',hot:false},
-  {nicho:'habilidades',emoji:'📋',titulo:'Notion para organizar tu vida y trabajo',precio:19,antes:null,tipo:'propio',hot:false},
-  {nicho:'bienestar',emoji:'🧘',titulo:'Rutina matutina de alto rendimiento',precio:17,antes:27,tipo:'propio',hot:false},
-];
-const bundles=[
-  {emoji:'🔥',titulo:'Pack IA Completo',desc:'ChatGPT + Imágenes con IA + Automatización · 3 cursos',precio:67,antes:111},
-  {emoji:'💼',titulo:'Pack Emprendedor Digital',desc:'Negocio + Email marketing + Finanzas + Notion · 4 cursos',precio:147,antes:222},
-];
-constconst nichos={todos:'Todos',salud:'💙 Salud',habilidades:'🛠️ Habilidades',ia:'🤖 IA',negocios:'💼 Negocios',finanzas:'💰 Finanzas',bienestar:'🧘 Bienestar'};
-const colores={salud:'#FFF0F3',ia:'#EEF2FF',negocios:'#FFF7ED',finanzas:'#F0FDF4',habilidades:'#FFF1F2',bienestar:'#F0F9FF'};
-let activo='todos';
-let cursoActivo=null;
+var nichos = {todos:"Todos",salud:"Salud",habilidades:"Habilidades"};
+var colores = {salud:"#FFF0F3",habilidades:"#FFF1F2"};
+var activo = "todos";
+var linkActivo = "";
 
 function renderFilters(){
-  document.getElementById('filters').innerHTML=Object.entries(nichos).map(([k,v])=>
-    `<button class="filter-btn ${k===activo?'active':''}" onclick="filtrar('${k}')">${v}</button>`).join('');
+  var html = "";
+  for(var k in nichos){
+    html += '<button class="filter-btn' + (k===activo?" active":"") + '" onclick="filtrar(\''+k+'\')">' + nichos[k] + "</button>";
+  }
+  document.getElementById("filters").innerHTML = html;
 }
+
 function renderGrid(){
-  const lista=activo==='todos'?cursos:cursos.filter(c=>c.nicho===activo);
-  document.getElementById('grid').innerHTML=lista.map(c=>`
-    <div class="card">
-      <div class="card-thumb" style="background:${colores[c.nicho]}">
-        <span>${c.emoji}</span>
-        <span class="card-badge ${c.tipo==='propio'?'badge-own':'badge-partner'}">${c.tipo==='propio'?'Propio':'Partner'}</span>
-        ${c.hot?'<span class="badge-hot">🔥 Popular</span>':''}
-      </div>
-      <div class="card-body">
-        <div class="card-niche">${nichos[c.nicho].replace(/^[^\s]+ /,'')}</div>
-        <div class="card-title">${c.titulo}</div>
-        <div class="card-footer">
-          <div>${c.antes?`<span class="price-old">$${c.antes}</span>`:''}<span class="price-new">$${c.precio}</span></div>
-          <button class="btn-buy" onclick="abrirModal('${c.nicho}-${c.precio}','${c.titulo}')">Comprar →</button>
-        </div>
-      </div>
-    </div>`).join('');
+  var lista = activo==="todos" ? cursos : cursos.filter(function(c){return c.nicho===activo;});
+  var html = "";
+  for(var i=0;i<lista.length;i++){
+    var c = lista[i];
+    var color = colores[c.nicho] || "#F7F6F2";
+    html += '<div class="card">';
+    html += '<div class="card-thumb" style="background:'+color+'">';
+    html += '<span>'+c.emoji+'</span>';
+    html += '<span class="card-badge badge-own">Propio</span>';
+    if(c.hot) html += '<span class="badge-hot">Popular</span>';
+    html += '</div>';
+    html += '<div class="card-body">';
+    html += '<div class="card-niche">'+nichos[c.nicho]+'</div>';
+    html += '<div class="card-title">'+c.titulo+'</div>';
+    html += '<div class="card-footer">';
+    html += '<span class="price-new">$'+c.precio+'</span>';
+    html += '<button class="btn-buy" onclick="abrirModal(\''+c.link+'\',\''+c.titulo+'\')">Comprar</button>';
+    html += '</div></div></div>';
+  }
+  document.getElementById("grid").innerHTML = html;
 }
-function renderBundles(){
-  document.getElementById('bundles').innerHTML=bundles.map(b=>`
-    <div class="bundle-card">
-      <span class="bundle-tag">PACK</span>
-      <span class="bundle-emoji">${b.emoji}</span>
-      <div class="bundle-title">${b.titulo}</div>
-      <div class="bundle-desc">${b.desc}</div>
-      <div class="bundle-footer">
-        <div><div class="bundle-old">antes $${b.antes}</div><div class="bundle-new">$${b.precio}</div></div>
-        <button class="btn-bundle" onclick="abrirModal('bundle','${b.titulo}')">Comprar →</button>
-      </div>
-    </div>`).join('');
-}
+
 function renderStrip(){
-  const items=['🤖 IA & Productividad','💼 Negocios Digitales','💰 Finanzas Personales','🛠️ Habilidades','🧘 Bienestar','📧 Email Marketing'];
-  const d=[...items,...items];
-  document.getElementById('strip').innerHTML=d.map(i=>`<span class="strip-item">${i}</span>`).join('');
+  var items = ["Salud","Habilidades Tecnicas","Electricidad","Celulares","Aire Acondicionado","Guias Medicas"];
+  var d = items.concat(items);
+  var html = "";
+  for(var i=0;i<d.length;i++){
+    html += '<span class="strip-item">'+d[i]+'</span>';
+  }
+  document.getElementById("strip").innerHTML = html;
 }
-function filtrar(n){activo=n;renderFilters();renderGrid();}
-function abrirModal(id,titulo){
-  cursoActivo=id;
-  document.getElementById('modal-titulo').textContent=titulo;
-  document.getElementById('modal').style.display='flex';
+
+function filtrar(n){
+  activo = n;
+  renderFilters();
+  renderGrid();
 }
+
+function abrirModal(link, titulo){
+  linkActivo = link;
+  document.getElementById("modal-titulo").textContent = titulo;
+  document.getElementById("btn-hotmart").href = link;
+  document.getElementById("modal").style.display = "flex";
+}
+
 function cerrarModal(){
-  document.getElementById('modal').style.display='none';
-  cursoActivo=null;
+  document.getElementById("modal").style.display = "none";
 }
+
 async function pagarMP(){
-  const email=prompt('Tu email para recibir el curso:');
-  if(!email)return;
+  var email = prompt("Tu email para recibir el acceso:");
+  if(!email) return;
   try{
-    const r=await fetch('/api/crear-pago',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({cursoId:cursoActivo,nombre:'Cliente',apellido:'Multikurso',email})});
-    const d=await r.json();
-    if(d.init_point)window.location.href=d.init_point;
-  }catch(e){alert('Error al procesar el pago.');}
+    var r = await fetch("/api/crear-pago",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({cursoId:"curso",nombre:"Cliente",apellido:"Web",email:email})});
+    var d = await r.json();
+    if(d.init_point) window.location.href = d.init_point;
+    else alert("Error al procesar. Usa Hotmart por ahora.");
+  }catch(e){
+    alert("Error al conectar. Usa Hotmart por ahora.");
+  }
 }
-renderFilters();renderGrid();renderBundles();renderStrip();
+
+renderFilters();
+renderGrid();
+renderStrip();
 </script>
 </body>
-  </html>
+</html>
