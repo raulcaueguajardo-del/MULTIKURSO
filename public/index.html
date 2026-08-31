@@ -54,28 +54,29 @@ section{padding:3rem 1.5rem;max-width:1000px;margin:0 auto}
 .btn-bundle{background:#F5C518;color:#0F1B2D;font-weight:700;font-size:13px;padding:9px 16px;border-radius:8px;border:none;cursor:pointer}
 .trust{background:#fff;border-top:1px solid #eee;border-bottom:1px solid #eee;padding:1.2rem 1.5rem;display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
 .trust-item{font-size:13px;color:#555;display:flex;align-items:center;gap:6px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:999}
+.modal-box{background:#fff;border-radius:16px;padding:2rem;max-width:320px;width:90%;text-align:center}
+.modal-title{font-size:1.1rem;font-weight:700;margin-bottom:.3rem}
+.modal-sub{font-size:13px;color:#666;margin-bottom:1.5rem}
+.btn-hotmart{display:block;background:#FF6B2B;color:#fff;font-weight:700;padding:12px;border-radius:10px;text-decoration:none;margin-bottom:10px}
+.btn-mp{display:block;width:100%;background:#009EE3;color:#fff;font-weight:700;padding:12px;border-radius:10px;border:none;cursor:pointer;margin-bottom:10px}
+.btn-cancel{background:none;border:none;color:#aaa;font-size:13px;cursor:pointer}
 footer{background:#0F1B2D;color:rgba(255,255,255,0.4);text-align:center;padding:1.5rem;font-size:12px}
 footer strong{color:#F5C518}
 </style>
 </head>
 <body>
-
 <nav>
   <div class="logo">Multi<span>kurso</span></div>
   <a href="#cursos" class="nav-cta">Ver cursos →</a>
 </nav>
-
 <div class="hero">
   <div class="hero-badge">⚡ Acceso inmediato · Sin suscripción</div>
   <h1>Aprende algo que <em>cambia</em><br>lo que podés hacer</h1>
   <p>Cursos digitales en IA, negocios, finanzas y más.<br>Compra una vez, aprende para siempre.</p>
   <a href="#cursos" class="btn-primary">🎓 Explorar cursos</a>
 </div>
-
-<div class="strip">
-  <div class="strip-inner" id="strip"></div>
-</div>
-
+<div class="strip"><div class="strip-inner" id="strip"></div></div>
 <section id="cursos">
   <div class="sec-label">Catálogo</div>
   <div class="sec-title">Todos los cursos</div>
@@ -83,23 +84,28 @@ footer strong{color:#F5C518}
   <div class="filters" id="filters"></div>
   <div class="grid" id="grid"></div>
 </section>
-
 <div class="trust">
-  <div class="trust-item">⚡ Acceso inmediato por email</div>
-  <div class="trust-item">🔒 Pago seguro con Mercado Pago</div>
+  <div class="trust-item">⚡ Acceso inmediato</div>
+  <div class="trust-item">🔒 Pago seguro</div>
   <div class="trust-item">♾️ Acceso de por vida</div>
   <div class="trust-item">🛡️ 7 días de garantía</div>
 </div>
-
 <section id="packs">
   <div class="sec-label">Mejor valor</div>
   <div class="sec-title">Packs con descuento</div>
   <p class="sec-sub">Varios cursos juntos a precio reducido.</p>
   <div class="bundles" id="bundles"></div>
 </section>
-
 <footer>© 2025 <strong>Multikurso</strong> — Todos los derechos reservados</footer>
-
+<div class="modal" id="modal" style="display:none">
+  <div class="modal-box">
+    <div class="modal-title">¿Cómo querés pagar?</div>
+    <div class="modal-sub" id="modal-titulo"></div>
+    <a href="https://go.hotmart.com/I107332377J" target="_blank" class="btn-hotmart">🟠 Pagar con Hotmart</a>
+    <button class="btn-mp" onclick="pagarMP()">🔵 Pagar con Mercado Pago</button>
+    <button class="btn-cancel" onclick="cerrarModal()">Cancelar</button>
+  </div>
+</div>
 <script>
 const cursos=[
   {nicho:'ia',emoji:'🤖',titulo:'ChatGPT para trabajar 2x más rápido',precio:37,antes:67,tipo:'propio',hot:true},
@@ -118,6 +124,7 @@ const bundles=[
 const nichos={todos:'Todos',ia:'🤖 IA',negocios:'💼 Negocios',finanzas:'💰 Finanzas',habilidades:'🛠️ Habilidades',bienestar:'🧘 Bienestar'};
 const colores={ia:'#EEF2FF',negocios:'#FFF7ED',finanzas:'#F0FDF4',habilidades:'#FFF1F2',bienestar:'#F0F9FF'};
 let activo='todos';
+let cursoActivo=null;
 
 function renderFilters(){
   document.getElementById('filters').innerHTML=Object.entries(nichos).map(([k,v])=>
@@ -137,7 +144,7 @@ function renderGrid(){
         <div class="card-title">${c.titulo}</div>
         <div class="card-footer">
           <div>${c.antes?`<span class="price-old">$${c.antes}</span>`:''}<span class="price-new">$${c.precio}</span></div>
-          <button class="btn-buy" onclick="comprar('${c.nicho}-${c.precio}','${c.titulo}',${c.precio})">Comprar →</button>
+          <button class="btn-buy" onclick="abrirModal('${c.nicho}-${c.precio}','${c.titulo}')">Comprar →</button>
         </div>
       </div>
     </div>`).join('');
@@ -151,7 +158,7 @@ function renderBundles(){
       <div class="bundle-desc">${b.desc}</div>
       <div class="bundle-footer">
         <div><div class="bundle-old">antes $${b.antes}</div><div class="bundle-new">$${b.precio}</div></div>
-        <button class="btn-bundle">Comprar →</button>
+        <button class="btn-bundle" onclick="abrirModal('bundle','${b.titulo}')">Comprar →</button>
       </div>
     </div>`).join('');
 }
@@ -159,42 +166,28 @@ function renderStrip(){
   const items=['🤖 IA & Productividad','💼 Negocios Digitales','💰 Finanzas Personales','🛠️ Habilidades','🧘 Bienestar','📧 Email Marketing'];
   const d=[...items,...items];
   document.getElementById('strip').innerHTML=d.map(i=>`<span class="strip-item">${i}</span>`).join('');
-}function comprar(cursoId,titulo,precio){
-  const opciones=document.createElement('div');
-  opciones.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:999';
-  opciones.innerHTML=`
-    <div style="background:#fff;border-radius:16px;padding:2rem;max-width:320px;width:90%;text-align:center">
-      <div style="font-size:1.1rem;font-weight:700;margin-bottom:.4rem">¿Cómo querés pagar?</div>
-      <div style="font-size:13px;color:#666;margin-bottom:1.5rem">${titulo}</div>
-      <a href="https://go.hotmart.com/I107332377J" target="_blank"
-         style="display:block;background:#FF6B2B;color:#fff;font-weight:700;padding:12px;border-radius:10px;text-decoration:none;margin-bottom:10px">
-        🟠 Pagar con Hotmart
-      </a>
-      <button onclick="pagarMP('${cursoId}')" 
-         style="display:block;width:100%;background:#009EE3;color:#fff;font-weight:700;padding:12px;border-radius:10px;border:none;cursor:pointer;margin-bottom:10px">
-        🔵 Pagar con Mercado Pago
-      </button>
-      <button onclick="this.closest('div').parentElement.remove()"
-         style="background:none;border:none;color:#aaa;font-size:13px;cursor:pointer">
-        Cancelar
-      </button>
-    </div>`;
-  document.body.appendChild(opciones);
 }
-
-async function pagarMP(cursoId){
+function filtrar(n){activo=n;renderFilters();renderGrid();}
+function abrirModal(id,titulo){
+  cursoActivo=id;
+  document.getElementById('modal-titulo').textContent=titulo;
+  document.getElementById('modal').style.display='flex';
+}
+function cerrarModal(){
+  document.getElementById('modal').style.display='none';
+  cursoActivo=null;
+}
+async function pagarMP(){
   const email=prompt('Tu email para recibir el curso:');
   if(!email)return;
   try{
     const r=await fetch('/api/crear-pago',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({cursoId,nombre:'Cliente',apellido:'Multikurso',email})});
+      body:JSON.stringify({cursoId:cursoActivo,nombre:'Cliente',apellido:'Multikurso',email})});
     const d=await r.json();
     if(d.init_point)window.location.href=d.init_point;
-  }catch(e){alert('Error al procesar el pago. Intentá de nuevo.');}
+  }catch(e){alert('Error al procesar el pago.');}
 }
-function filtrar(n){activo=n;renderFilters();renderGrid();}
-async
 renderFilters();renderGrid();renderBundles();renderStrip();
 </script>
 </body>
-</html>
+  </html>
